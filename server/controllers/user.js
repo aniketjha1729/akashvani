@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
-const { genToken } = require("../services/generateToken");
+const { genToken, saveToken } = require("../services/generateToken");
 
 exports.signIn = async (req, res) => {
   const { email, password } = req.body;
@@ -14,11 +14,16 @@ exports.signIn = async (req, res) => {
       return res.status(400).json({ msg: "Invalid credentials" });
     }
     const { accessToken, refreshToken } = genToken({ _id: user._id });
+    await saveToken(refreshToken, user._id);
     res.cookie("refreshToken", refreshToken, {
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
     });
-    return res.status(200).json({ accessToken });
+    res.cookie("accessToken", accessToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+    });
+    return res.status(200).json({ user, auth: true });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ msg: "Server Error" });
@@ -42,12 +47,24 @@ exports.signUp = async (req, res) => {
         if (err) throw err;
         newUser.password = hash;
         newUser.save((err, user) => {
-          res.status(200).json({ msg: "Signup Success", user });
+          res.status(200).json({ msg: "Signup Success" });
         });
       });
     });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ msg: "Server Error" });
+  }
+};
+
+exports.currentProfile = async (req, res) => {
+  try {
+    let user = await User.findById({ _id: req.user._id }).select("-password");
+    if (!user) {
+      return res.json({ msg: "Invalid token" });
+    }
+    return res.status(200).json(user);
+  } catch (err) {
     return res.status(500).json({ msg: "Server Error" });
   }
 };
