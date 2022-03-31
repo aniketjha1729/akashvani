@@ -4,7 +4,6 @@ const { genToken } = require("../services/generateToken");
 
 exports.signIn = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
   try {
     let user = await User.findOne({ email });
     if (!user) {
