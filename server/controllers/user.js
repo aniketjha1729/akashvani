@@ -15,7 +15,7 @@ exports.signIn = async (req, res) => {
       return res.status(400).json({ msg: "Invalid credentials" });
     }
     const { accessToken, refreshToken } = genToken({ _id: user._id });
-    await saveToken(refreshToken, user._id);
+    // await saveToken(refreshToken, user._id);
     res.cookie("refreshToken", refreshToken, {
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,

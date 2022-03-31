@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { currentProfile } from "./api/index";
 import { useSelector, useDispatch } from "react-redux";
 import { setAuth } from "./store/authSlice";
+
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { isAuth, user } = useSelector((state) => state.auth);
   return (
