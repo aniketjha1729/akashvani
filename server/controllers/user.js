@@ -18,7 +18,7 @@ exports.signIn = async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
     });
-    return res.status(200).json({ accessToken });
+    return res.status(200).json({ accessToken, user });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ msg: "Server Error" });
@@ -42,7 +42,7 @@ exports.signUp = async (req, res) => {
         if (err) throw err;
         newUser.password = hash;
         newUser.save((err, user) => {
-          res.status(200).json({ msg: "Signup Success", user });
+          res.status(200).json({ msg: "Signup Success" });
         });
       });
     });
