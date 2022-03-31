@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { signIn } from "../api/index";
+import { setAuth } from "../store/authSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+
+
 const SignIn = () => {
+  const dispatch = useDispatch();
+  const { isAuth, user } = useSelector((state) => state.auth);
+
   const [signInFormData, setSignInFormData] = useState({
     email: "test1@gmial.com",
     password: "test@1234",
@@ -20,9 +28,14 @@ const SignIn = () => {
       email,
       password,
     });
+    dispatch(setAuth({ user: data.user }));
     console.log(data);
   };
-  
+
+  if (isAuth===true &&user!==null ) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div className="signupform">
       <form onSubmit={onSubmit}>

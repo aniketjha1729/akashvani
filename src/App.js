@@ -5,22 +5,23 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import { useSelector } from "react-redux";
 
-const isAuth = false;
-const authToken = "abc";
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      isAuth == true && authToken != null ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/login" />
-      )
-    }
-  />
-);
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const { isAuth, user } = useSelector((state) => state.auth);
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuth === true && user != null ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
+  );
+};
 
 const App = () => {
   return (
