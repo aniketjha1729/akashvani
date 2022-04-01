@@ -34,12 +34,14 @@ io.on("connection", (socket) => {
   socket.on(ACTIONS.JOIN, ({ roomId, user }) => {
     socketUserMapping[socket.id] = user;
     const clients = Array.from(io.sockets.adapter.rooms.get(roomId) || []);
+
     clients.forEach((clientId) => {
       io.to(clientId).emit(ACTIONS.ADD_PEER, {
         peerId: socket.id,
         createOffer: false,
         user: user,
       });
+
       socket.emit(ACTIONS.ADD_PEER, {
         peerId: clientId,
         createOffer: true,
@@ -49,6 +51,39 @@ io.on("connection", (socket) => {
     socket.join(roomId);
   });
 
+  socket.on(ACTIONS.RELAY_ICE, ({ peerId, icecandidate }) => {
+    io.to(peerId).emit(ACTIONS.ICE_CANDIDATE, {
+      peerId: socket.id,
+      icecandidate,
+    });
+  });
+
+  socket.on(ACTIONS.RELAY_SDP, ({ peerId, sessionDescription }) => {
+    io.to(peerId).emit(ACTIONS.SESSION_DESCRIPTION, {
+      peerId: socket.id,
+      sessionDescription,
+    });
+  });
+
+  const leaveRoom = ({ roomId }) => {
+    const { rooms } = socket;
+    Array.from(rooms).forEach((roomId) => {
+      const clients = Array.from(io.sockets.adapter.rooms.get(roomId) || []);
+      clients.forEach((clientId) => {
+        io.to(clientId).emit(ACTIONS.REMOVE_PEER, {
+          peerId: socket.id,
+          userId: socketUserMapping[socket.id]?.id,
+        });
+        socket.emit(ACTIONS.REMOVE_PEER, {
+          peerId: clientId,
+          userId: socketUserMapping[clientId]?.id,
+        });
+      });
+      socket.leave(roomId);
+    });
+    delete socketUserMapping[socket.id];
+  };
+  socket.on(ACTIONS.LEAVE, leaveRoom);
 });
 
 server.listen(PORT, () => {
