@@ -1,7 +1,12 @@
 import React from "react";
-
+import { useHistory } from "react-router-dom";
 const RoomCard = ({ room }) => {
-  return <div className="cards">{room.topic}</div>;
+  const history = useHistory();
+  return (
+    <div onClick={() => history.push(`/room/${room.id}`)} className="cards">
+      {room.topic}
+    </div>
+  );
 };
 
 export default RoomCard;
