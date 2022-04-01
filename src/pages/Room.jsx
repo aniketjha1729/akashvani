@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useWebRtc } from "../hooks/useWebRtc";
 import { useSelector } from "react-redux";
+import { getRoomById } from "../api/index";
 const Room = () => {
   const { user } = useSelector((state) => state.auth);
   const { id: roomID } = useParams();
-  const { clients, provideRef } = useWebRtc(roomID, user);
+  const { clients, provideRef, handleMute } = useWebRtc(roomID, user);
+  const [room, setRoom] = useState();
+  const [isMute, setIsMute] = useState(true);
+
+  useEffect(() => {
+    handleMute(isMute, user.id);
+  }, [isMute]);
+
+  useEffect(() => {
+    const getRoom = async () => {
+      const { data } = await getRoomById(roomID);
+      setRoom(data);
+    };
+    getRoom();
+  }, [roomID]);
+
+  const handleMuteClick = (clientId) => {
+    if (clientId !== user.id) return;
+    setIsMute((prev) => !prev);
+  };
 
   return (
     <div>
       <h1>All Connected Clinets</h1>
+      {room?.topic}
       {clients.map((client) => (
         <div key={client.id}>
           <audio
@@ -18,6 +39,10 @@ const Room = () => {
             autoPlay
           ></audio>
           <h4>{client.name}</h4>
+          <button onClick={() => handleMuteClick(client.id)}>
+            Mute/UnMute
+          </button>
+          {client.muted ? <div> Mute</div> : <div>UnMute</div>}
         </div>
       ))}
     </div>

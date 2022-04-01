@@ -35,3 +35,16 @@ exports.getAllRooms = async (req, res) => {
     return res.status(500).json({ msg: "Server Error" });
   }
 };
+
+exports.getRoomById = async (req, res) => {
+  try {
+    const room = await Room.findOne({ _id: req.params.roomId });
+    if (!room) {
+      return res.status(404).json({ msg: "No room found" });
+    }
+    return res.status(200).json(room);
+  } catch {
+    console.log(err);
+    return res.status(500).json({ msg: "Server Error" });
+  }
+};
