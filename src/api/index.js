@@ -12,5 +12,7 @@ const api = axios.create({
 export const signUp = (data) => api.post("/api/signUp", data);
 export const signIn = (data) => api.post("/api/signIn", data);
 export const currentProfile = () => api.get("/api/profile");
+export const createRoom = (data) => api.post("/api/rooms", data);
+export const getAllRooms = () => api.get("/api/rooms");
 
 export default api;
