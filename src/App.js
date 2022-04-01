@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { currentProfile } from "./api/index";
 import { useSelector, useDispatch } from "react-redux";
 import { setAuth } from "./store/authSlice";
+import Room from "./pages/Room";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { isAuth, user } = useSelector((state) => state.auth);
@@ -46,6 +47,7 @@ const App = () => {
         <Route exact path="/register" component={SignUp} />
         <Route exact path="/login" component={SignIn} />
         <PrivateRoute exact path="/" component={Home} />
+        <PrivateRoute exact path="/room/:id" component={Room} />
       </Switch>
     </BrowserRouter>
   );

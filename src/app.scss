@@ -4,6 +4,24 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #969292;
+}
+
+.cards {
+  background-color: #ffffff;
+  width: 200px;
+  height: 200px;
+}
+
+.roomContainer {
+  display: flex;
+  flex-wrap: "wrap";
+  justify-content: space-around;
+  width: 100vw;
+  border: 1px solid red;
+}
+
 .app {
   display: flex;
   flex-direction: column;
