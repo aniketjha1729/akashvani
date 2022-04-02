@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-export const socketInit = () => {
+const socketInit = () => {
   const options = {
     "force new connection": true,
     reconnectionAttempts: "Infinity",
@@ -9,3 +9,5 @@ export const socketInit = () => {
   };
   return io(process.env.REACT_APP_BACKEND_URL, options);
 };
+
+export default socketInit;
