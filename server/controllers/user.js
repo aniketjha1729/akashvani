@@ -71,3 +71,9 @@ exports.currentProfile = async (req, res) => {
     return res.status(500).json({ msg: "Server Error" });
   }
 };
+
+exports.logout = (req, res) => {
+  res.clearCookie("refreshToken");
+  res.clearCookie("accessToken");
+  return res.status(200).json({ user: null, auth: false });
+};

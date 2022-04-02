@@ -7,7 +7,10 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { MdLogout } from "react-icons/md";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../api";
+import { setAuth } from "../store/authSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -21,8 +24,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const classes = useStyles();
+  const logout = async () => {
+    const { data } = await logoutUser();
+    dispatch(setAuth(data));
+  };
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -40,7 +48,10 @@ const Navbar = () => {
           </Typography>
           {user ? (
             <>
-              <Button color="inherit">{user.name}</Button>
+              <Button color="inherit">{user.name}</Button> &nbsp;
+              <Button color="inherit" onClick={logout}>
+                <MdLogout size="24px" />
+              </Button>
             </>
           ) : (
             <>

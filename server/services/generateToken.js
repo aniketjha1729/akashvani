@@ -5,7 +5,7 @@ const Token = require("../models/token");
 
 exports.genToken = (payload) => {
   const accessToken = jwt.sign(payload, SECRET_ACCESS_KEY, {
-    expiresIn: "1m",
+    expiresIn: "1hr",
   });
   const refreshToken = jwt.sign(payload, SECRET_REFRESH_KEY, {
     expiresIn: "1y",
