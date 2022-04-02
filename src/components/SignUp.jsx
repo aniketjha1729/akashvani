@@ -10,7 +10,7 @@ const SignUp = () => {
   const [signUpFormData, setSignUpFormData] = useState({
     name: "",
     email: "",
-    password: "test@1234",
+    password: "",
   });
   const history = useHistory();
   const { name, email, password } = signUpFormData;

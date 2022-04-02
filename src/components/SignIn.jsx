@@ -14,7 +14,7 @@ const SignIn = () => {
 
   const [signInFormData, setSignInFormData] = useState({
     email: "",
-    password: "test@1234",
+    password: "",
   });
 
   const { email, password } = signInFormData;
