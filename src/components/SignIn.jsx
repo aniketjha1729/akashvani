@@ -13,7 +13,7 @@ const SignIn = () => {
   const { isAuth, user } = useSelector((state) => state.auth);
 
   const [signInFormData, setSignInFormData] = useState({
-    email: "aniket@gmail.com",
+    email: "",
     password: "test@1234",
   });
 

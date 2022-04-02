@@ -4,13 +4,15 @@ import Button from "@material-ui/core/Button";
 import { signUp } from "../api/index";
 import { MdLock } from "react-icons/md";
 import BackImg from "../static/back.svg";
+import { useHistory } from "react-router-dom";
+
 const SignUp = () => {
   const [signUpFormData, setSignUpFormData] = useState({
-    name: "Aniket Kumar",
-    email: "aniket@gmail.com",
+    name: "",
+    email: "",
     password: "test@1234",
   });
-
+  const history = useHistory();
   const { name, email, password } = signUpFormData;
 
   const onHandleChange = (e) => {
@@ -24,7 +26,7 @@ const SignUp = () => {
       email,
       password,
     });
-    console.log(data);
+    history.push(`/login`);
   };
 
   return (
