@@ -5,7 +5,12 @@
 }
 
 body {
-  background-color: #969292;
+  background-color: #e4e4e4;
+}
+
+a{
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .cards {
@@ -15,28 +20,77 @@ body {
   cursor: pointer;
 }
 
-.roomContainer {
-  display: flex;
-  flex-wrap: "wrap";
-  justify-content: space-around;
-  width: 100vw;
-  border: 1px solid red;
+.home{
+  width: 700px;
+  margin: 10px auto;
+  border: 1px solid red;  
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(87, 86, 86);
-}
 
-.signupform {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 50px auto;
   div {
     margin-bottom: 5px;
   }
 }
+
+
+.modalMask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3F51B5;
+  
+}
+
+.modalBody {
+  width: 50%;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 20px;
+  position: relative;
+  border: 1px solid #3F51B5;
+}
+
+.modalHeader {
+  padding: 30px;
+  border-bottom: 2px solid #3F51B5;
+  text-align: center;
+}
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.modalFooter {
+  padding: 30px;
+  text-align: center;
+}
+
+.modalFooter h2 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+.closeButton {
+  position: absolute;
+  right: 3px;
+  top: 5px;
+  background: none;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+

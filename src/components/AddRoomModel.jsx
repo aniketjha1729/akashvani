@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import styles from "./AddRoomModal.module.css";
 import TextField from "@material-ui/core/TextField";
 import { createRoom as create } from "../api/index";
 import { useHistory } from "react-router-dom";
+import { MdClose } from "react-icons/md";
+import Button from "@material-ui/core/Button";
+
 const AddRoomModel = ({ onClose }) => {
   const history = useHistory();
   const [topic, setTopic] = useState("");
@@ -21,16 +23,16 @@ const AddRoomModel = ({ onClose }) => {
   };
 
   return (
-    <div className={styles.modalMask}>
-      <div className={styles.modalBody}>
-        <button onClick={onClose} className={styles.closeButton}>
-          Close
-        </button>
-        <div className={styles.modalHeader}>
-          <h3 className={styles.heading}>Enter the topic to be disscussed</h3>
+    <div className="modalMask">
+      <div className="modalBody">
+        <div className="closeButton">
+          <MdClose onClick={onClose} size="30px" />
+        </div>
+        <div className="modalHeader">
+          <h3 className="heading">Enter the Name of The Room</h3>
           <TextField
             name="topic"
-            label="Topic"
+            label="Room Name"
             id="outlined-size-small"
             variant="outlined"
             size="small"
@@ -38,11 +40,11 @@ const AddRoomModel = ({ onClose }) => {
             onChange={(e) => setTopic(e.target.value)}
           />
         </div>
-        <div className={styles.modalFooter}>
-          <h2>Start a room, open to everyone</h2>
-          <button onClick={createRoom} className={styles.footerButton}>
-            <span>Let's go</span>
-          </button>
+        <div className="modalFooter">
+          <h2>Create A New Room</h2>
+          <Button onClick={createRoom} variant="contained" color="primary">
+            Let's Go
+          </Button>
         </div>
       </div>
     </div>
