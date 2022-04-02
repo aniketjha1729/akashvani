@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { signIn } from "../api/index";
+import { MdLock } from "react-icons/md";
 import { setAuth } from "../store/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import BackImg from "../static/back.svg";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -36,36 +38,47 @@ const SignIn = () => {
   }
 
   return (
-    <div className="formContainer">
-      <form onSubmit={onSubmit}>
-        <div>
-          <TextField
-            name="email"
-            value={email}
-            label="Email"
-            id="outlined-size-small"
-            variant="outlined"
-            size="small"
-            onChange={onHandleChange}
-          />
+    <div className="formPage">
+      <div className="formLeft">
+        <img src={BackImg} alt="" />
+      </div>
+      <div className="formRight">
+        <div className="formContainer">
+          <div className="formHeading">
+            <MdLock />Login
+          </div>
+          <form onSubmit={onSubmit}>
+            <div className="fieldWrapper">
+              <TextField
+                name="email"
+                value={email}
+                label="Email"
+                id="outlined-size-small"
+                variant="outlined"
+                size="small"
+                onChange={onHandleChange}
+              />
+            </div>
+            <div className="fieldWrapper">
+              <TextField
+                name="password"
+                type="password"
+                value={password}
+                label="Password"
+                id="outlined-size-small"
+                variant="outlined"
+                size="small"
+                onChange={onHandleChange}
+              />
+            </div>
+            <div className="fieldWrapper">
+              <Button variant="contained" color="primary" type="submit">
+                SignIn
+              </Button>
+            </div>
+          </form>
         </div>
-        <div>
-          <TextField
-            name="password"
-            value={password}
-            label="Password"
-            id="outlined-size-small"
-            variant="outlined"
-            size="small"
-            onChange={onHandleChange}
-          />
-        </div>
-        <div>
-          <Button variant="contained" color="primary" type="submit">
-            SignIn
-          </Button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };
