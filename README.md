@@ -39,11 +39,11 @@ This is a platform created in MERN stack with WEBRTC. This can be used as a plat
 2.  Create a `.env` file and insert the following code. Replace values with yours!!
 
     ### For root folder
-        ```javascript
+        ```
         REACT_APP_BACKEND_URL="http://localhost:5000"
         ```
     ### For server folder
-        ```javascript
+        ```
         SECRET_ACCESS_KEY="abc1234"
         SECRET_REFRESH_KEY="abc@1234"
         MONGOURI="mongodb://localhost/akasvani"
@@ -59,7 +59,7 @@ This is a platform created in MERN stack with WEBRTC. This can be used as a plat
     Go to the server directory and run the command `npm run dev`
 5.  Now load the app
 
-    ```javacript
+    ```
     localhost:3000
     ```
 
