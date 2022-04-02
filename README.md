@@ -5,26 +5,20 @@ This is a platform created in MERN stack with WEBRTC. This can be used as a plat
 <p align="center">
  <img src="snaps/Login.png" width="400" heigth="200">
 &nbsp; &nbsp;
- <img src="snaps/adminDashboard.png" width="400" heigth="200">
+ <img src="snaps/Register.png" width="400" heigth="200">
 </p>
 
 <p align="center">
- <img src="snaps/adminCreateNotice.png" width="400" heigth="200">
+ <img src="snaps/HomeRoom.png" width="400" heigth="200">
 &nbsp; &nbsp;
- <img src="snaps/adminUser.png" width="400" heigth="200">
+ <img src="snaps/HomeN.png" width="400" heigth="200">
 </p>
 
 <p align="center">
- <img src="snaps/Forum.png" width="400" heigth="200">
+ <img src="snaps/Chat.png" width="400" heigth="200">
 &nbsp; &nbsp;
- <img src="snaps/CreatePost.png" width="400" heigth="200">
 </p>
 
-<p align="center">
- <img src="snaps/AskQuestion.png" width="400" heigth="200">
-&nbsp; &nbsp;
- <img src="snaps/answer.png" width="400" heigth="200">
-</p>
 
 ## Requirements
 
