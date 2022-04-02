@@ -4,35 +4,88 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #e4e4e4;
-}
-
 a{
   text-decoration: none;
   color: #ffffff;
 }
 
 .cards {
-  background-color: #ffffff;
+  background-color: #cccccc;
   width: 200px;
-  height: 200px;
+  height: 120px;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
+  .roomName{
+    font-size: 20px;
+    font-weight: 100;
+    margin-bottom: 10px;
+  }
+  .speakerName{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .participants{
+    text-align: right;
+  }
 }
 
 .home{
   width: 700px;
   margin: 10px auto;
-  border: 1px solid red;  
+  margin-top: 30px;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow:3px 3px 5px 6px #ccc;
+  .startRoomContainer{
+    display: flex;
+    justify-content: space-between;
+  }
+  .roomContainer{
+    margin-top: 10px;
+    height: 420px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+.room{
+  width: 700px;
+  margin: 10px auto;
+  margin-top: 30px;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow:3px 3px 5px 6px #ccc;
+  text-align: center;
+}
+
+.clientName{
+  margin-top: 8px;
+}
+
+.peopleContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.cards{
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px auto;
+.formContainer {
+  border-radius: 5px;
+  padding: 50px;
+  width: 300px;
+  margin:150px auto;
+  box-shadow:3px 3px 5px 6px #ccc;
   div {
+    text-align: center;
     margin-bottom: 5px;
   }
 }

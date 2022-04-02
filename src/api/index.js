@@ -15,5 +15,6 @@ export const currentProfile = () => api.get("/api/profile");
 export const createRoom = (data) => api.post("/api/rooms", data);
 export const getAllRooms = () => api.get("/api/rooms");
 export const getRoomById = (data) => api.get(`/api/rooms/${data}`);
+export const logoutUser = () => api.post(`/api/logout`);
 
 export default api;

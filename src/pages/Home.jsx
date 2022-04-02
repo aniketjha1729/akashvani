@@ -3,6 +3,8 @@ import Button from "@material-ui/core/Button";
 import AddRoomModel from "../components/AddRoomModel";
 import RoomCard from "../components/RoomCard";
 import { getAllRooms } from "../api/index";
+import Typography from "@material-ui/core/Typography";
+import { MdMic } from "react-icons/md";
 
 const Home = () => {
   const [showModel, setShowModel] = useState(false);
@@ -23,9 +25,16 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Button onClick={onToggleModel} variant="contained" color="primary">
-        Start Room
-      </Button>
+      <div className="startRoomContainer">
+        <div>
+          <Typography variant="h6">All available Rooms</Typography>
+        </div>
+        <div>
+          <Button onClick={onToggleModel} variant="contained" color="primary">
+            <MdMic size="20px" /> &nbsp;  Create A Room
+          </Button>
+        </div>
+      </div>
       <div className="roomContainer">
         {rooms.map((room) => (
           <RoomCard room={room} key={room.id} />

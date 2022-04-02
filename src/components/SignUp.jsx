@@ -26,7 +26,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="form">
+    <div className="formContainer">
+      
       <form onSubmit={onSubmit}>
         <div>
           <TextField
