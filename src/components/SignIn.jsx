@@ -13,8 +13,8 @@ const SignIn = () => {
   const { isAuth, user } = useSelector((state) => state.auth);
 
   const [signInFormData, setSignInFormData] = useState({
-    email: "aniket@gmail.com",
-    password: "test@1234",
+    email: "",
+    password: "",
   });
 
   const { email, password } = signInFormData;
@@ -30,7 +30,6 @@ const SignIn = () => {
       password,
     });
     dispatch(setAuth({ user: data.user }));
-    console.log(data);
   };
 
   if (isAuth === true && user !== null) {

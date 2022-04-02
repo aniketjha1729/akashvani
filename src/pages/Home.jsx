@@ -9,12 +9,12 @@ import { MdMic } from "react-icons/md";
 const Home = () => {
   const [showModel, setShowModel] = useState(false);
   const [rooms, setRooms] = useState([]);
+  
 
   useEffect(() => {
     const getRooms = async () => {
       const { data } = await getAllRooms();
       setRooms(data);
-      console.log(data);
     };
     getRooms();
   }, []);
@@ -36,9 +36,11 @@ const Home = () => {
         </div>
       </div>
       <div className="roomContainer">
+        {rooms.length===0?<div className="noRoom">No Rooms Available...</div>:<>
         {rooms.map((room) => (
           <RoomCard room={room} key={room.id} />
-        ))}
+        ))}</>}
+        
       </div>
       {showModel ? <AddRoomModel onClose={onToggleModel} /> : ""}
     </div>
