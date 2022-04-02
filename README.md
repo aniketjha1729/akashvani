@@ -48,16 +48,12 @@ This is a platform created in MERN stack with WEBRTC. This can be used as a plat
         SECRET_REFRESH_KEY="abc@1234"
         MONGOURI="mongodb://localhost/akasvani"
         ```
-3.  ### Create a folder in ./server directory and name it as
-
-    `files`
-
-4.  ### Start the server for backend and frontend
+3.  ### Start the server for backend and frontend
     ### For frontend
     `npm start` in the root directory
     ### For backend
     Go to the server directory and run the command `npm run dev`
-5.  Now load the app
+4.  Now load the app
 
     ```
     localhost:3000
