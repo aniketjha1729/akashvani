@@ -4,8 +4,8 @@ import Button from "@material-ui/core/Button";
 import { signUp } from "../api/index";
 const SignUp = () => {
   const [signUpFormData, setSignUpFormData] = useState({
-    name: "test1",
-    email: "test1@gmial.com",
+    name: "Aniket Kumar",
+    email: "aniket@gmail.com",
     password: "test@1234",
   });
 
@@ -26,7 +26,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signupform">
+    <div className="form">
       <form onSubmit={onSubmit}>
         <div>
           <TextField

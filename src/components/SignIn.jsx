@@ -6,13 +6,12 @@ import { setAuth } from "../store/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-
 const SignIn = () => {
   const dispatch = useDispatch();
   const { isAuth, user } = useSelector((state) => state.auth);
 
   const [signInFormData, setSignInFormData] = useState({
-    email: "test1@gmial.com",
+    email: "aniket@gmail.com",
     password: "test@1234",
   });
 
@@ -32,12 +31,12 @@ const SignIn = () => {
     console.log(data);
   };
 
-  if (isAuth===true &&user!==null ) {
+  if (isAuth === true && user !== null) {
     return <Redirect to="/" />;
   }
 
   return (
-    <div className="signupform">
+    <div className="form">
       <form onSubmit={onSubmit}>
         <div>
           <TextField

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import AddRoomModel from "../components/AddRoomModel";
-import { useSelector } from "react-redux";
 import RoomCard from "../components/RoomCard";
 import { getAllRooms } from "../api/index";
 
 const Home = () => {
   const [showModel, setShowModel] = useState(false);
   const [rooms, setRooms] = useState([]);
-  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const getRooms = async () => {
@@ -24,9 +22,7 @@ const Home = () => {
   };
 
   return (
-    <>
-      Welcome
-      {user?.name}
+    <div className="home">
       <Button onClick={onToggleModel} variant="contained" color="primary">
         Start Room
       </Button>
@@ -36,7 +32,7 @@ const Home = () => {
         ))}
       </div>
       {showModel ? <AddRoomModel onClose={onToggleModel} /> : ""}
-    </>
+    </div>
   );
 };
 

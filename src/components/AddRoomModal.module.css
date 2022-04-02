@@ -24,34 +24,11 @@
   border-bottom: 2px solid #262626;
 }
 
-.roomTypes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.typeBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.typeBox.active {
-  background: #262626;
-}
 
 .heading {
   margin-bottom: 5px;
 }
 
-.subHeading {
-  font-size: 18px;
-  margin: 10px 0;
-  font-weight: bold;
-}
 
 .modalFooter {
   padding: 30px;
