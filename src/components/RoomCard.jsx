@@ -9,7 +9,7 @@ const RoomCard = ({ room }) => {
     <div onClick={() => history.push(`/room/${room.id}`)} className="cards">
       <div className="roomName">{room.topic}</div>
       <div className="speakerName">
-        <Avatar alt="Remy Sharp" /> &nbsp; John Doe
+        <Avatar/> &nbsp; John Doe
       </div>
       <div className="participants">
         <MdPeopleAlt/>

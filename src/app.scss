@@ -52,6 +52,26 @@ a{
   }
 }
 
+.room{
+  width: 700px;
+  margin: 10px auto;
+  margin-top: 30px;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow:3px 3px 5px 6px #ccc;
+  text-align: center;
+}
+
+.clientName{
+  margin-top: 8px;
+}
+
+.peopleContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .cards{
   margin-bottom: 20px;
   margin-top: 10px;
