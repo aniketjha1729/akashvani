@@ -16,7 +16,6 @@ const AddRoomModel = ({ onClose }) => {
       }
       const { data } = await create({ topic });
       history.push(`/room/${data.id}`);
-      console.log(data);
     } catch (err) {
       console.log(err);
     }

@@ -30,7 +30,6 @@ const SignIn = () => {
       password,
     });
     dispatch(setAuth({ user: data.user }));
-    console.log(data);
   };
 
   if (isAuth === true && user !== null) {
